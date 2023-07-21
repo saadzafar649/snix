@@ -2,7 +2,7 @@ import React from "react";
 import { Button, IconButton } from "@mui/material";
 import { AddCircle, RemoveCircle, Delete } from "@mui/icons-material";
 import { useSnapshot } from "valtio";
-import state from "../../store";
+import state from "../store";
 
 const CartItem = ({ item }) => {
   const snap = useSnapshot(state);

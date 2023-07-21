@@ -1,5 +1,5 @@
 import React from 'react'
-import Section1 from './Home/Section1'
+import Section1 from './../components/Section1'
 import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
 
 const Home = () => {

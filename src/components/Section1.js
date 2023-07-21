@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Shoe from "./../../assets/2.png";
-import Shoe2 from "./../../assets/3.png";
+import Shoe from "./../assets/2.png";
+import Shoe2 from "./../assets/3.png";
 import { Typography } from "@mui/material";
 import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
 

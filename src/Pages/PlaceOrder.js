@@ -10,21 +10,17 @@ import {
   TimelineContent,
 } from "@mui/lab";
 import state from "../store";
-import OrderItem from "./Order/OrderItem";
-import { Link, Navigate  } from 'react-router-dom';
+import OrderItem from "./../components/OrderItem";
+import { Link, Navigate } from "react-router-dom";
 import "react-credit-cards/es/styles-compiled.css";
 import Cards from "react-credit-cards";
 
 const PlaceOrder = () => {
   const snap = useSnapshot(state);
-    // Redirect to ProductList if cart is empty
+  // Redirect to ProductList if cart is empty
 
-  const getTotalPrice = () => {
-    return snap.cart.reduce(
-      (total, item) => total + item.price * item.count,
-      0
-    );
-  };
+  const getTotalPrice = () =>
+    snap.cart.reduce((total, item) => total + item.price * item.count, 0);
   const [formValues, setFormValues] = useState({
     cardNumber: "",
     expiryDate: "",
@@ -42,14 +38,14 @@ const PlaceOrder = () => {
   });
 
   const handleInputChange = (name, value) => {
-    if (name === "cardNumber") {
-      
-      value = formatCardNumber(value);
-    } else if (name === "cvc") {
-      value = formatCVC(value);
-    } else if (name === "expiryDate") {
-      value = formatExpiryDate(value);
-    }
+    value =
+      name === "cardNumber"
+        ? formatCardNumber(value)
+        : name === "cvc"
+        ? formatCVC(value)
+        : name === "expiryDate"
+        ? formatExpiryDate(value)
+        : value;
 
     setFormValues({
       ...formValues,
@@ -105,8 +101,8 @@ const PlaceOrder = () => {
       address: "",
     };
 
-    if (!/^\d{16}$/.test(formValues.cardNumber.replace(/\s+/g, ''))) {
-      newErrors.cardNumber = 'Card number must be 16 digits.';
+    if (!/^\d{16}$/.test(formValues.cardNumber.replace(/\s+/g, ""))) {
+      newErrors.cardNumber = "Card number must be 16 digits.";
       formIsValid = false;
     }
 
@@ -136,7 +132,7 @@ const PlaceOrder = () => {
       // Proceed with submitting the order
       // Your logic for submitting the order goes here
       console.log("Order submitted successfully!");
-      window.location.replace('/OrderPlaced');
+      window.location.replace("/OrderPlaced");
     }
   };
 

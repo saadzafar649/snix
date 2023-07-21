@@ -87,17 +87,18 @@ const ProductList = () => {
             </Collapse>
           ))
         ) : (
-          <></>
+          <Collapse key={filteredShoes.length == 0}>
+            <Typography variant="h6" color="textSecondary">
+              No products found
+            </Typography>
+          </Collapse>
         )}
       </TransitionGroup>
-      <Toast open={showToast} onClose={handleToastClose} message="Item have been added to the cart" />
-      {filteredShoes.length == 0 ? (
-        <Typography variant="h6" color="textSecondary">
-          No products found
-        </Typography>
-      ) : (
-        ""
-      )}
+      <Toast
+        open={showToast}
+        onClose={handleToastClose}
+        message="Item have been added to the cart"
+      />
     </div>
   );
 };
