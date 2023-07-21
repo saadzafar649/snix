@@ -38,14 +38,8 @@ const PlaceOrder = () => {
   });
 
   const handleInputChange = (name, value) => {
-    value =
-      name === "cardNumber"
-        ? formatCardNumber(value)
-        : name === "cvc"
-        ? formatCVC(value)
-        : name === "expiryDate"
-        ? formatExpiryDate(value)
-        : value;
+    const funcs = { cardNumber: formatCardNumber, cvc: formatCVC, expiryDate: formatExpiryDate };
+    if (funcs[name]) value = funcs[name](value);
 
     setFormValues({
       ...formValues,
